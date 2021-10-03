@@ -1,0 +1,29 @@
+Wordpress Vulnerability PoC by SleepTheGod
+
+[server]$ grep -R "base64_" /home/username/example.com/
+    
+./wp-admin/includes/class-wp-importer.php:	$headers['Authorization'] = 'Basic ' . base64_encode( "$username:$password" );
+./wp-includes/class-smtp.php:        		fputs($this->smtp_conn, base64_encode("\0".$username."\0".$password) . $this->CRLF);
+./wp-includes/class-smtp.php:        		fputs($this->smtp_conn, base64_encode($username) . $this->CRLF);
+./wp-includes/class-smtp.php:        		fputs($this->smtp_conn, base64_encode($password) . $this->CRLF);
+./wp-includes/class-smtp.php:        		fputs($this->smtp_conn,"AUTH NTLM " . base64_encode($msg1) . $this->CRLF);
+./wp-includes/class-smtp.php:        		$challenge = base64_decode($challenge);
+./wp-includes/class-smtp.php:        		fputs($this->smtp_conn, base64_encode($msg3) . $this->CRLF);
+./wp-includes/ID3/module.audio.ogg.php:		$flac->setStringMode(base64_decode($ThisFileInfo_ogg_comments_raw[$i]['value']));
+./wp-includes/ID3/module.audio.ogg.php:		$data = base64_decode($ThisFileInfo_ogg_comments_raw[$i]['value']);
+./wp-includes/class-IXR.php:                	$value = base64_decode($this->_currentTagContents);
+./wp-includes/class-IXR.php:        		return '<base64>'.base64_encode($this->data).'</base64>';
+./wp-includes/class-feed.php:			$data = base64_decode( $data );
+./wp-includes/class-phpmailer.php:        	$encoded = chunk_split(base64_encode($str), 76, $this->LE);
+./wp-includes/class-phpmailer.php:        	$encoded = base64_encode($str);
+./wp-includes/class-phpmailer.php:        	$chunk = base64_encode($chunk);
+./wp-includes/class-phpmailer.php:      	return base64_encode($signature);
+./wp-includes/class-phpmailer.php:    		$DKIMb64  = base64_encode(pack("H*", sha1($body))) ; // Base64 of packed binary SHA-1 hash of body
+./wp-includes/SimplePie/Sanitize.php:		$data = base64_decode($data);
+./wp-includes/SimplePie/File.php:		$out .= "Authorization: Basic " . base64_encode("$url_parts[user]:$url_parts[pass]") . "\r\n";
+./wp-includes/class-http.php:			return 'Proxy-Authorization: Basic ' . base64_encode( $this->authentication() );
+./wp-includes/class-wp-atom-server.php:		explode(':', base64_decode(substr($_SERVER['HTTP_AUTHORIZATION'], 6)));
+./wp-includes/class-wp-atom-server.php:		explode(':', base64_decode(substr($_SERVER['REDIRECT_REMOTE_USER'], 6)));
+./wp-includes/class-snoopy.php:			$headers .= "Authorization: Basic ".base64_encode($this->user.":".$this->pass)."\r\n";
+./wp-includes/class-snoopy.php:			$headers .= 'Proxy-Authorization: ' . 'Basic ' . base64_encode($this->proxy_user . ':' . $this->proxy_pass)."\r\n";
+./wp-includes/class-snoopy.php:	
